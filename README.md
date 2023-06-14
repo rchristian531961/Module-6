@@ -19,3 +19,6 @@ function Car(props){return html--------props.name---html}
 
 const variable=<Car name="Names Value ">
 
+Error Handling: 
+in terminal 
+npm i react-error-boundary
