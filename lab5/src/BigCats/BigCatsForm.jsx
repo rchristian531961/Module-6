@@ -14,7 +14,7 @@ function CatsForm(){
         var newCat={id:currentCats.length, name:catName, latinName:newLatinName};
         updateCats.push(newCat);
         setCurrentCats(updateCats)
-       }
+    }
 
    //handles the submitResult
    const handleSubmit=(e)=>{
