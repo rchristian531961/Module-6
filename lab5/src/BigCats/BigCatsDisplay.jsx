@@ -7,7 +7,7 @@ function DisplayCats(){
 
     var [curCats,setCurCats]=useState(cats);
 
-    const catsDisplay=curCats.map(cat=>
+    var catsDisplay=curCats.map(cat=>
         <MyCats 
         key={cat.id}
         name={cat.name}
@@ -16,7 +16,6 @@ function DisplayCats(){
         />
     )
 
-    
     //handler for reverse
     const handleReverseCats=()=>{
         const reverseCats=[...curCats];
@@ -50,16 +49,20 @@ function DisplayCats(){
         setCurCats(currentCats);
     }
 
+    
+    
+
     return(
         <div>
-            
-        <ul>
-            {catsDisplay}
-        </ul>
+        {<CatsForm/>} 
         <button onClick={handleSortingCats}>Sort Cats</button>
         <button onClick={handleReverseCats}>Reverse Cats</button>
         <button onClick={handlePantheraCats}>Panthera Cats</button>
         <button onClick={handleResetCats}>Reset Cats</button>
+        <ul>
+            {catsDisplay}
+        </ul> 
+    
         </div>
     )
 }
