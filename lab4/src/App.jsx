@@ -3,8 +3,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import DisplayCats from './BigCats/BigCatsDisplay'
-import BigCatsSorting from './BigCats/BigCatsSorting'
-
 
 
 function App() {
@@ -33,7 +31,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <DisplayCats/>
-      <BigCatsSorting/>
+      
     </>
   )
 }
