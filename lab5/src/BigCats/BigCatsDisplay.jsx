@@ -100,6 +100,7 @@ function DisplayCats(){
         <button onClick={handleReverseCats}>Reverse Cats</button>
         <button onClick={handlePantheraCats}>Panthera Cats</button>
         <button onClick={handleResetCats}>Reset Cats</button>
+        
         <ul>
             {catsDisplay}
         </ul> 
