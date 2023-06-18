@@ -7,6 +7,21 @@ function DisplayCats(){
 
     var [curCats,setCurCats]=useState(cats);
 
+    var displayingData=(curCats)=>{
+        return (
+            <ul>
+                {curCats.map(cat=>
+        <MyCats 
+        key={cat.id}
+        name={cat.name}
+        latinName={cat.latinName}
+        image={cat.image}
+        del={()=>removeCat(cat.id)}
+        />)}
+            </ul>
+        )
+    }
+
     var catsDisplay=curCats.map(cat=>
         <MyCats 
         key={cat.id}
@@ -58,52 +73,54 @@ function DisplayCats(){
         setCurCats(currentCats);
     }
 
+    //handler for Cats Form
+    
+
     const [catName,setCatName]=useState('');
     const [newLatinName,setNewLatinName]=useState('');
 
+    const addNewCat=()=>{
+        var updateCats=curCats;
+        var newCat={id:curCats.length, name:catName, latinName:newLatinName};
+        updateCats.push(newCat)
+        setCurCats(updateCats)
+    }
 
-
+      //handles the submitResult
     const handleSubmit=(e)=>{
-        e.preventDefault() //prevents refresh of page on submit
-        console.log(catName) 
-        console.log(newLatinName)
-        //try e you'll notice e is an array containing password, username button in form etc
-        // e.target[1].type='text';
+    e.preventDefault() //prevents refresh of page on submit
+    console.log(catName) 
+    console.log(newLatinName)
 
-        const addNewCat=()=>{
-            var newCat={id:curCats.length, name:catName, latinName:newLatinName};
-            setCurCats(curCats.push(newCat));
-        }
+    //try e you'll notice e is an array containing password, username button in form etc
+    // e.target[1].type='text';
+    
+     addNewCat()
+     console.log(cats)
+    }
 
-        addNewCat()
-        console.log(curCats)
-       }
-
+    const handleCatName=(newCatName)=>{setCatName(newCatName)}
+    const handleCatLatinName=(newCatLatinName)=>{setNewLatinName(newCatLatinName)}
+   
     return(
         <div>
-        {/* {<CatsForm/>}  */}
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>Cat Name: 
-                    <input type='text' onChange={(e)=>{setCatName(e.target.value)}} name='catName' value={catName}></input>
-                </label>
-                <br/>
-                <label>Latin Name: 
-                    <input type='text' onChange={(e)=>{setNewLatinName(e.target.value)}} name='latinName' value={newLatinName}></input>
-                </label>
-                <br/>
-                <button>Submit</button>
-            </form>
-        </div>
-
+        {<CatsForm 
+        handleSubmit={handleSubmit}
+        handleName={handleCatName}
+        handleCatLatin={handleCatLatinName}
+        catName={catName}
+        latinName={newLatinName}
+        />}
+       
         <button onClick={handleSortingCats}>Sort Cats</button>
         <button onClick={handleReverseCats}>Reverse Cats</button>
         <button onClick={handlePantheraCats}>Panthera Cats</button>
         <button onClick={handleResetCats}>Reset Cats</button>
         
-        <ul>
+        {displayingData(curCats)}
+        {/* <ul>
             {catsDisplay}
-        </ul> 
+        </ul>  */}
     
         </div>
     )
