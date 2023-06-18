@@ -10,12 +10,23 @@ function CalculatorForm(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        setSolution(Calculate(num1,num2,operation))
-        
+        if (num2=="0" && operation=="/"){
+            setSolution("Undefined")
+        }
+        else if (/^[a-zA-Z]+$/.test(num1)){
+            setSolution("Incorrect Entry for num1")
+        }
+        else if (/^[a-zA-Z]+$/.test(num2)){
+            setSolution("Incorrect Entry for num2")
+        }
+        else{
+            setSolution(Calculate(num1,num2,operation))
+        }
         //Verify Solution
         console.log(num1)
         console.log(num2)
         console.log(operation);
+        // console.log(/^[a-zA-Z]+$/.test("Hel2lo"));
         console.log(Calculate(num1,num2,operation))
     }
 
