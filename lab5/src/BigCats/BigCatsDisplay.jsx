@@ -7,21 +7,6 @@ function DisplayCats(){
 
     var [curCats,setCurCats]=useState(cats);
 
-    var displayingData=(curCats)=>{
-        return (
-            <ul>
-                {curCats.map(cat=>
-        <MyCats 
-        key={cat.id}
-        name={cat.name}
-        latinName={cat.latinName}
-        image={cat.image}
-        del={()=>removeCat(cat.id)}
-        />)}
-            </ul>
-        )
-    }
-
     var catsDisplay=curCats.map(cat=>
         <MyCats 
         key={cat.id}
@@ -81,9 +66,11 @@ function DisplayCats(){
 
     const addNewCat=()=>{
         var updateCats=curCats;
+        // console.log("updateCats:", curCats)
         var newCat={id:curCats.length, name:catName, latinName:newLatinName};
         updateCats.push(newCat)
-        setCurCats(updateCats)
+        // console.log("Cats List:", curCats)
+        setCurCats([...curCats])
     }
 
       //handles the submitResult
@@ -95,7 +82,7 @@ function DisplayCats(){
     //try e you'll notice e is an array containing password, username button in form etc
     // e.target[1].type='text';
     
-     addNewCat()
+    addNewCat()
      console.log(cats)
     }
 
@@ -117,10 +104,9 @@ function DisplayCats(){
         <button onClick={handlePantheraCats}>Panthera Cats</button>
         <button onClick={handleResetCats}>Reset Cats</button>
         
-        {displayingData(curCats)}
-        {/* <ul>
+        <ul>
             {catsDisplay}
-        </ul>  */}
+        </ul> 
     
         </div>
     )
